@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-
-    [SerializeField] private const string K_moveAxisNameMouseX = "Mouse X";
-    [SerializeField] private const string K_moveAxisNameMouseY = "Mouse Y";
-
     [SerializeField] private Transform M_player;
     [SerializeField] private Vector3 cameraOffset;
     [SerializeField] private float smoothing = 5f;
+    [SerializeField] private int speed = 20;
+
+    private Vector3 M_rotation = Vector3.zero;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

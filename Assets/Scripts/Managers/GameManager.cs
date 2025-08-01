@@ -1,16 +1,26 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static GameManager Instance;
+    [SerializeField] private WaveManager waveManager;
+
+    private void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayerDeath()
     {
-        
+        waveManager.ClearEnemies();
+        Debug.Log("YOU LOSE");
+        SceneManager.SetActiveScene(SceneManager.GetActiveScene());
+
+    }
+
+    public void PlayerVictory()
+    {
+        waveManager.ClearEnemies();
     }
 }

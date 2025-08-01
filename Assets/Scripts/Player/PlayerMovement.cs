@@ -3,19 +3,20 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private InputAction M_inputs;
     [SerializeField] private int speed;
     [SerializeField] private float smoothing = 5f;
+
+
+    [SerializeField] private int groundLayer = 3;
+    [SerializeField] private float rayDistance = 100f;
 
     private Vector3 M_rotation;
     private Vector3 M_moveDirection;
     private Rigidbody M_rb;
 
 
-    [SerializeField] private const string K_moveAxisNameHorizontal = "Horizontal";
-    [SerializeField] private const string K_moveAxisNameVertical = "Vertical";
-    [SerializeField] private const string K_moveAxisNameMouseX = "Mouse X";
-    [SerializeField] private const string K_moveAxisNameMouseY = "Mouse Y";
+    private const string K_moveAxisNameHorizontal = "Horizontal";
+    private const string K_moveAxisNameVertical = "Vertical";
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RotatePlayer();
         MovePlayer();
     }
 
@@ -35,23 +37,23 @@ public class PlayerMovement : MonoBehaviour
         float horizontalMovement = Input.GetAxisRaw(K_moveAxisNameHorizontal);
         float verticalMovement = Input.GetAxisRaw(K_moveAxisNameVertical);
 
-        M_moveDirection.Set(verticalMovement, 0, horizontalMovement);
+        M_moveDirection.Set(horizontalMovement, 0, verticalMovement);
 
         M_moveDirection = M_moveDirection.normalized * speed * Time.deltaTime;
 
         M_rb.MovePosition((this.transform.position + M_moveDirection));
     }
 
-    //private void RotatePlayer()
-    //{
-    //    float mouseX = Input.GetAxisRaw(K_moveAxisNameMouseX);
-    //    float mouseY = Input.GetAxisRaw(K_moveAxisNameMouseY);
-
-    //    M_rotation.Set(mouseX, mouseY,0f);
-
-    //    M_rotation = M_rotation.normalized * speed * Time.deltaTime;
-
-    //    this.transform.rotation = Vector3.Lerp(this.transform.rotation, M_rotation, smoothing * Time.deltaTime);
-    //}
-
+    private void RotatePlayer()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit,rayDistance,groundLayer))
+        {
+            Vector3 rotateVector = hit.point -transform.position;
+            rotateVector.y = 0;
+            Quaternion playerRotation = Quaternion.LookRotation(rotateVector);
+            M_rb.MoveRotation(playerRotation);
+        }
+    }
 }
