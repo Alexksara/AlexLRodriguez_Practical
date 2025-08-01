@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    [SerializeField] private WaveManager waveManager;
-    [SerializeField] private GameObject player;
+    [SerializeField] private WaveManager M_waveManager;
+    [SerializeField] private GameObject M_player;
 
     private void Awake()
     {
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDeath()
     {
-        waveManager.ClearEnemies();
+        M_waveManager.ClearEnemies();
         Debug.Log("YOU LOSE");
         SceneManager.LoadScene(0);
         //player.transform.position = Vector3.zero + Vector3.up;
@@ -23,6 +23,6 @@ public class GameManager : MonoBehaviour
 
     public void PlayerVictory()
     {
-        waveManager.ClearEnemies();
+        M_waveManager.ClearEnemies();
     }
 }

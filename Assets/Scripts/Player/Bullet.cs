@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private int speed = 5;
-    [SerializeField] private int damage = 10;
+    [SerializeField] private int M_speed = 5;
+    [SerializeField] private int M_damage = 10;
 
     public void Initialize()
     {
-        GetComponent<Rigidbody>().AddForce(Vector3.forward * speed, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(Vector3.forward * M_speed, ForceMode.Impulse);
         Debug.Log("shooting");
     }
 
@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
         Enemy enemy = other.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
-            enemy.TakeDamage(damage);
+            enemy.TakeDamage(M_damage);
         }    
         Destroy(this.gameObject);
     }

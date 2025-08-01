@@ -3,25 +3,24 @@ using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int health;
-    [SerializeField] private int maxHealth = 100;
-    [SerializeField] private string enemyTag = "Enemy";
+    [SerializeField] private int M_health;
+    [SerializeField] private int M_maxHealth = 100;
 
     [SerializeField] private TextMeshProUGUI healthText;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        health = maxHealth;
-        healthText.text = "HP: " + health;
+        M_health = M_maxHealth;
+        healthText.text = "HP: " + M_health;
     }
 
     public void TakeDamage(int damage)
     {
-        Mathf.Clamp(health -= damage,0,maxHealth);
-        healthText.text = "HP: " + health;
+        Mathf.Clamp(M_health -= damage,0,M_maxHealth);
+        healthText.text = "HP: " + M_health;
 
-        if(health <= 0)
+        if(M_health <= 0)
         {
             GameManager.Instance.PlayerDeath();
         }

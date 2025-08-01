@@ -6,17 +6,17 @@ public class WaveManager : MonoBehaviour
 {
 
 
-    [SerializeField] private int minEnemyNumber = 4;
-    [SerializeField] private int maxEnemyNumber = 8;
+    [SerializeField] private int M_minEnemyNumber = 4;
+    [SerializeField] private int M_maxEnemyNumber = 8;
 
-    [SerializeField] private float minWaveTime = 8;
-    [SerializeField] private float maxWaveTime = 20;
-    [SerializeField] private float countdown = 0;
+    [SerializeField] private float M_minWaveTime = 8;
+    [SerializeField] private float M_maxWaveTime = 20;
+    private float countdown = 0;
 
-    [SerializeField] private GameObject player;
-    [SerializeField] private List<Transform> spawnPoints;
-    [SerializeField] private List<GameObject> enemyPrefabs;
-    [SerializeField] private List<GameObject> spawnedEnemies;
+    [SerializeField] private GameObject M_player;
+    [SerializeField] private List<Transform> M_spawnPoints;
+    [SerializeField] private List<GameObject> M_enemyPrefabs;
+    [SerializeField] private List<GameObject> M_spawnedEnemies;
     
     // Update is called once per frame
     void Update()
@@ -25,32 +25,32 @@ public class WaveManager : MonoBehaviour
 
         if(countdown <= 0 )
         {
-            countdown = Mathf.CeilToInt(Random.Range( minWaveTime, maxWaveTime ));
+            countdown = Mathf.CeilToInt(Random.Range( M_minWaveTime, M_maxWaveTime ));
             SpawnWave();
         }
     }
 
     public void SpawnWave()
     {
-        int enemyNumber = Random.Range(minEnemyNumber, maxEnemyNumber);
+        int enemyNumber = Random.Range(M_minEnemyNumber, M_maxEnemyNumber);
         
         for (int i = 0; i < enemyNumber; i++)
         {
-            Vector3 spawnPosition = spawnPoints[(Random.Range(0, spawnPoints.Count))].transform.position;
+            Vector3 spawnPosition = M_spawnPoints[(Random.Range(0, M_spawnPoints.Count))].transform.position;
 
-            GameObject enemyInstance = Instantiate(enemyPrefabs[(Random.Range(0, enemyPrefabs.Count))], spawnPosition, Quaternion.identity);
-            enemyInstance.GetComponent<Enemy>().Initialize(player);
-            spawnedEnemies.Add(enemyInstance);
+            GameObject enemyInstance = Instantiate(M_enemyPrefabs[(Random.Range(0, M_enemyPrefabs.Count))], spawnPosition, Quaternion.identity);
+            enemyInstance.GetComponent<Enemy>().Initialize(M_player);
+            M_spawnedEnemies.Add(enemyInstance);
 
         }
     }
 
     public void ClearEnemies()
     {
-        foreach(GameObject enemy in spawnedEnemies)
+        foreach(GameObject enemy in M_spawnedEnemies)
         {
             Destroy(enemy);
         }
-        spawnedEnemies = null;
+        M_spawnedEnemies = null;
     }
 }
