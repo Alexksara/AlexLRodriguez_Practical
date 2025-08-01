@@ -20,7 +20,6 @@ public class PlayerHealth : MonoBehaviour
     {
         Mathf.Clamp(health -= damage,0,maxHealth);
         healthText.text = "HP: " + health;
-        Debug.Log("Took damage");
 
         if(health <= 0)
         {

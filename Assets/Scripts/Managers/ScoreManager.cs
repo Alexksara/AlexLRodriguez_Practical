@@ -1,5 +1,6 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -17,18 +18,24 @@ public class ScoreManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        scoreText.text = "Score: " + currentScore;
+        highScoreText.text = "HighScore : " + PlayerPrefs.GetInt(highScorePrefName);
+    }
+
     public void AddScore(int score)
     {
         currentScore += score;
-        scoreText.text = "Score: " + score;
+        scoreText.text = "Score: " + currentScore;
 
-        if (score >= maxScore)
+        if (currentScore >= maxScore)
         {
             GameManager.Instance.PlayerVictory();
         }
-        if(score > highScore)
+        if(currentScore > highScore)
         {
-            PlayerPrefs.SetInt(highScorePrefName, score);
+            PlayerPrefs.SetInt(highScorePrefName, currentScore);
         }
         highScoreText.text = "HighScore : " + PlayerPrefs.GetInt(highScorePrefName);
         
