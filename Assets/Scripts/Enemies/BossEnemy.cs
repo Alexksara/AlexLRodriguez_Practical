@@ -10,6 +10,6 @@ public class BossEnemy : Enemy
 
     public override void CollisionEffect()
     {
-        player.GetComponent<PlayerHealth>().TakeDamage(damage);
+        player.GetComponent<PlayerHealth>().TakeDamage(m_damage);
     }
 }

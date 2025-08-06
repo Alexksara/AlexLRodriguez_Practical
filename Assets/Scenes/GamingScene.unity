@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c39ef0e317c3c40822795900dc78c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  M_health: 0
-  M_maxHealth: 100
+  m_health: 0
+  m_maxHealth: 100
   healthText: {fileID: 147892201}
 --- !u!136 &5683270
 CapsuleCollider:
@@ -662,22 +662,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56031f0920f54af4586249431096d6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  M_minEnemyNumber: 4
-  M_maxEnemyNumber: 8
-  M_minWaveTime: 8
-  M_maxWaveTime: 20
-  M_bossEnemy: {fileID: 4795285327042251393, guid: e4060ea735dd62844a1bd6767304a81f, type: 3}
-  M_player: {fileID: 5683266}
-  M_spawnPoints:
+  m_minEnemyNumber: 4
+  m_maxEnemyNumber: 8
+  m_minWaveTime: 8
+  m_maxWaveTime: 20
+  m_bossEnemy: {fileID: 4795285327042251393, guid: e4060ea735dd62844a1bd6767304a81f, type: 3}
+  m_player: {fileID: 5683266}
+  m_spawnPoints:
   - {fileID: 1836984715}
   - {fileID: 1045968007}
   - {fileID: 191541475}
   - {fileID: 437114925}
-  M_enemyPrefabs:
+  m_enemyPrefabs:
   - {fileID: 5130964407170080954, guid: 385aa1f20f9dde145bfe76acfe30ebd4, type: 3}
-  - {fileID: 5800304619003697645, guid: 2bd041799f0385246a3bc8747f71d040, type: 3}
   - {fileID: 4397015542261380328, guid: 28b3ddaf3a8cd914b9112c1a2ad9c10a, type: 3}
-  M_spawnedEnemies: []
+  - {fileID: 5800304619003697645, guid: 2bd041799f0385246a3bc8747f71d040, type: 3}
+  m_spawnedEnemies: []
 --- !u!4 &254819771
 Transform:
   m_ObjectHideFlags: 0
@@ -705,10 +705,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ec831fcafd0d547b78fffddbc4ef8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  M_scoreText: {fileID: 609792604}
-  M_highScoreText: {fileID: 857909499}
-  M_maxScore: 300
-  M_highScore: 0
+  m_scoreText: {fileID: 609792604}
+  m_highScoreText: {fileID: 857909499}
+  m_maxScore: 300
+  m_highScore: 0
 --- !u!114 &254819773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,8 +721,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1b18fff117a5745b4e1482c15e4c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  M_waveManager: {fileID: 254819769}
-  M_player: {fileID: 5683266}
+  m_waveManager: {fileID: 254819769}
+  m_player: {fileID: 5683266}
 --- !u!1 &268583190
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,7 +767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802b0faec905a10479544090192288c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  M_bulletPrefab: {fileID: 8637705918898071867, guid: e044ab3ee6444f849b54bf081f89bbb3, type: 3}
+  m_bulletPrefab: {fileID: 8637705918898071867, guid: e044ab3ee6444f849b54bf081f89bbb3, type: 3}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0

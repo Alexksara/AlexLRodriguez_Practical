@@ -6,11 +6,11 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
 
-    [SerializeField] private TextMeshProUGUI M_scoreText;
-    [SerializeField] private TextMeshProUGUI M_highScoreText;
-    [SerializeField] private int M_maxScore = 300;
-    [SerializeField] private int M_highScore = 0;
-    private int currentScore;
+    [SerializeField] private TextMeshProUGUI m_scoreText;
+    [SerializeField] private TextMeshProUGUI m_highScoreText;
+    [SerializeField] private int m_maxScore = 300;
+    [SerializeField] private int m_highScore = 0;
+    private int m_currentScore;
 
     private const string highScorePrefName = "High Score";
     private void Awake()
@@ -20,24 +20,24 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        M_scoreText.text = "Score: " + currentScore;
-        M_highScoreText.text = "HighScore : " + PlayerPrefs.GetInt(highScorePrefName);
+        m_scoreText.text = "Score: " + m_currentScore;
+        m_highScoreText.text = "HighScore : " + PlayerPrefs.GetInt(highScorePrefName);
     }
 
     public void AddScore(int score)
     {
-        currentScore += score;
-        M_scoreText.text = "Score: " + currentScore;
+        m_currentScore += score;
+        m_scoreText.text = "Score: " + m_currentScore;
 
-        if (currentScore >= M_maxScore)
+        if (m_currentScore >= m_maxScore)
         {
             GameManager.Instance.PlayerVictory();
         }
-        if(currentScore > M_highScore)
+        if(m_currentScore > m_highScore)
         {
-            PlayerPrefs.SetInt(highScorePrefName, currentScore);
+            PlayerPrefs.SetInt(highScorePrefName, m_currentScore);
         }
-        M_highScoreText.text = "HighScore : " + PlayerPrefs.GetInt(highScorePrefName);
+        m_highScoreText.text = "HighScore : " + PlayerPrefs.GetInt(highScorePrefName);
         
     }
 }

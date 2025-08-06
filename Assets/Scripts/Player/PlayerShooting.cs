@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    [SerializeField] private GameObject M_bulletPrefab;
+    [SerializeField] private GameObject m_bulletPrefab;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,7 +22,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void Fire()
     {
-        GameObject bulletInstance = Instantiate(M_bulletPrefab, this.transform.position,this.transform.rotation);
+        GameObject bulletInstance = Instantiate(m_bulletPrefab, this.transform.position,this.transform.rotation);
         bulletInstance.GetComponent<Bullet>().Initialize();
     }
 }

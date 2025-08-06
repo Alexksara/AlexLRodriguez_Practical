@@ -122,11 +122,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812ccd258145cba4d9cfa81546af7d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
-  speed: 15
-  damage: 10
-  score: 10
-  navMesh: {fileID: 0}
+  m_health: 15
+  m_speed: 19
+  m_damage: 10
+  m_score: 10
 --- !u!195 &-2736417898979365036
 NavMeshAgent:
   m_ObjectHideFlags: 0

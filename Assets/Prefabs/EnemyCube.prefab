@@ -144,8 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5956a32403fa643b5bd1da1ce65900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 35
-  speed: 10
-  damage: 20
-  score: 20
-  navMesh: {fileID: 0}
+  m_health: 30
+  m_speed: 14
+  m_damage: 20
+  m_score: 20

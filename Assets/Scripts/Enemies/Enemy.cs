@@ -4,43 +4,43 @@ using UnityEngine.AI;
 [RequireComponent (typeof(NavMeshAgent))]
 public abstract class Enemy : MonoBehaviour
 {
-    [SerializeField] protected int health;
-    [SerializeField] protected float speed;
-    [SerializeField] protected int damage;
-    [SerializeField] protected int score;
-    [SerializeField] protected NavMeshAgent navMesh;
+    [SerializeField] protected int m_health;
+    [SerializeField] protected float m_speed;
+    [SerializeField] protected int m_damage;
+    [SerializeField] protected int m_score;
+    protected NavMeshAgent m_navMesh;
 
     protected GameObject player;
     protected PlayerHealth playerHealth;
     // Update is called once per frame
     void Update()
     {
-        if(health <= 0)
+        if(m_health <= 0)
         {
             Die();
         }
 
-        if(player != null && health > 0 )
+        if(player != null && m_health > 0 )
         {
-            navMesh.SetDestination(player.transform.position);
+            m_navMesh.SetDestination(player.transform.position);
         }
     }
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        m_health -= damage;
     }
 
     public void Initialize(GameObject target)
     {
         player = target;
         playerHealth = player.GetComponent<PlayerHealth>();
-        navMesh = GetComponent<NavMeshAgent>();
+        m_navMesh = GetComponent<NavMeshAgent>();
     }
 
     public virtual void Die()
     {
-        ScoreManager.Instance.AddScore(score);
+        ScoreManager.Instance.AddScore(m_score);
         Destroy(this.gameObject);
     }
 
@@ -58,7 +58,7 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void CollisionEffect()
     {
-        player.GetComponent<PlayerHealth>().TakeDamage(damage);
+        player.GetComponent<PlayerHealth>().TakeDamage(m_damage);
         Destroy(this.gameObject);
     }
 }
