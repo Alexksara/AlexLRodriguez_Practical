@@ -11,6 +11,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private float m_minWaveTime = 8;
     [SerializeField] private float m_maxWaveTime = 20;
     private float countdown = 0;
+    private bool spawning = true;
 
     [SerializeField] private GameObject m_bossEnemy;
     [SerializeField] private GameObject m_player;
@@ -23,7 +24,7 @@ public class WaveManager : MonoBehaviour
     {
         countdown -= Time.deltaTime;
 
-        if(countdown <= 0 )
+        if(countdown <= 0 && spawning)
         {
             countdown = Mathf.CeilToInt(Random.Range( m_minWaveTime, m_maxWaveTime ));
             SpawnWave();
@@ -58,5 +59,6 @@ public class WaveManager : MonoBehaviour
     {
         GameObject bossInstance =  Instantiate(m_bossEnemy, m_spawnPoints[0].transform.position,Quaternion.identity);
         bossInstance.GetComponent<Enemy>().Initialize(m_player);
+        spawning = false;
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine.AI;
 [RequireComponent (typeof(NavMeshAgent))]
 public abstract class Enemy : MonoBehaviour
 {
+    private const string playerTag = "Player";
     [SerializeField] protected int m_health;
     [SerializeField] protected float m_speed;
     [SerializeField] protected int m_damage;
@@ -44,14 +45,15 @@ public abstract class Enemy : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.transform == player.transform)
+        if (other.gameObject.CompareTag(playerTag) || other.gameObject.transform == player.transform)
         {
             CollisionEffect();
         }
     }
-
 
 
     public virtual void CollisionEffect()
