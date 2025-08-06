@@ -4,13 +4,6 @@ public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] private GameObject m_bulletPrefab;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        Fire();
-    }
-
     // Update is called once per frame
     void Update()
     {

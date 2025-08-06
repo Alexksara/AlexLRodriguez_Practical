@@ -8,7 +8,6 @@ public class Bullet : MonoBehaviour
     public void Initialize()
     {
         GetComponent<Rigidbody>().AddForce(this.transform.forward * m_speed, ForceMode.Impulse);
-        Debug.Log("shooting");
     }
 
     private void OnTriggerEnter(Collider other)

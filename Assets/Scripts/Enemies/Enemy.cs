@@ -46,11 +46,9 @@ public abstract class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(" collision");
         if (collision.gameObject.transform == player.transform)
         {
             CollisionEffect();
-            Debug.Log("player collision");
         }
     }
 

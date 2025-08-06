@@ -8,19 +8,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private int m_lookSpeed;
 
     private Vector3 m_moveDirection;
-    private Rigidbody m_rb;
-
 
     private const string k_moveAxisNameHorizontal = "Horizontal";
     private const string k_moveAxisNameVertical = "Vertical";
     private const string k_mouseAxisNameX = "Mouse X";
-    private const string k_mouseAxisNameY = "Mouse Y";
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        m_rb = GetComponent<Rigidbody>();
-    }
 
     // Update is called once per frame
     void Update()
