@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
 
     public void Initialize()
     {
-        GetComponent<Rigidbody>().AddForce(Vector3.forward * M_speed, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(this.transform.forward * M_speed, ForceMode.Impulse);
         Debug.Log("shooting");
     }
 
