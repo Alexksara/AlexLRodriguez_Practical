@@ -38,7 +38,7 @@ public abstract class Enemy : MonoBehaviour
         navMesh = GetComponent<NavMeshAgent>();
     }
 
-    private void Die()
+    public virtual void Die()
     {
         ScoreManager.Instance.AddScore(score);
         Destroy(this.gameObject);
@@ -46,10 +46,19 @@ public abstract class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(" collision");
         if (collision.gameObject.transform == player.transform)
         {
-            player.GetComponent<PlayerHealth>().TakeDamage(damage);
-            Destroy(this.gameObject);
+            CollisionEffect();
+            Debug.Log("player collision");
         }
+    }
+
+
+
+    public virtual void CollisionEffect()
+    {
+        player.GetComponent<PlayerHealth>().TakeDamage(damage);
+        Destroy(this.gameObject);
     }
 }

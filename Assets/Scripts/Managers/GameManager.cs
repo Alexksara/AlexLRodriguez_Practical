@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -10,13 +11,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        Cursor.visible = false;
     }
 
     public void PlayerDeath()
     {
         M_waveManager.ClearEnemies();
         Debug.Log("YOU LOSE");
-        SceneManager.LoadScene(0);
+        RestartGame();
         //player.transform.position = Vector3.zero + Vector3.up;
 
     }
@@ -24,5 +26,11 @@ public class GameManager : MonoBehaviour
     public void PlayerVictory()
     {
         M_waveManager.ClearEnemies();
+        M_waveManager.SpawnBoss();
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
     }
 }

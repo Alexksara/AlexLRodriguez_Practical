@@ -1,11 +1,10 @@
 using NUnit.Framework;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 public class WaveManager : MonoBehaviour
 {
-
-
     [SerializeField] private int M_minEnemyNumber = 4;
     [SerializeField] private int M_maxEnemyNumber = 8;
 
@@ -13,6 +12,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private float M_maxWaveTime = 20;
     private float countdown = 0;
 
+    [SerializeField] private GameObject M_bossEnemy;
     [SerializeField] private GameObject M_player;
     [SerializeField] private List<Transform> M_spawnPoints;
     [SerializeField] private List<GameObject> M_enemyPrefabs;
@@ -39,8 +39,8 @@ public class WaveManager : MonoBehaviour
             Vector3 spawnPosition = M_spawnPoints[(Random.Range(0, M_spawnPoints.Count))].transform.position;
 
             GameObject enemyInstance = Instantiate(M_enemyPrefabs[(Random.Range(0, M_enemyPrefabs.Count))], spawnPosition, Quaternion.identity);
-            enemyInstance.GetComponent<Enemy>().Initialize(M_player);
             M_spawnedEnemies.Add(enemyInstance);
+            enemyInstance.GetComponent<Enemy>().Initialize(M_player);
 
         }
     }
@@ -52,5 +52,11 @@ public class WaveManager : MonoBehaviour
             Destroy(enemy);
         }
         M_spawnedEnemies = null;
+    }
+
+    public void SpawnBoss()
+    {
+        GameObject bossInstance =  Instantiate(M_bossEnemy, M_spawnPoints[0].transform.position,Quaternion.identity);
+        bossInstance.GetComponent<Enemy>().Initialize(M_player);
     }
 }

@@ -22,7 +22,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void Fire()
     {
-        GameObject bulletInstance = Instantiate(M_bulletPrefab, this.transform.position + Vector3.forward,Quaternion.identity);
+        GameObject bulletInstance = Instantiate(M_bulletPrefab, this.transform.position + Vector3.forward,this.transform.rotation);
         bulletInstance.GetComponent<Bullet>().Initialize();
     }
 }
